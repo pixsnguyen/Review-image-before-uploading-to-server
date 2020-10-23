@@ -1,0 +1,33 @@
+.fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    font-size: 200px !important;
+    direction: ltr;
+    cursor: pointer;
+}
+.border{
+    border: 1px solid #f2f2f2;
+}
+.h100{
+    height: 100px;
+}
+.lh100{
+    line-height: 100px;
+}
+.v-middle{
+    vertical-align: middle!important;
+}
+.m-t-5{
+    margin-top: 5px;
+}
+.m-t-10{
+    margin-top: 10px;
+}
+.m-t-15{
+    margin-top: 15px;
+}
