@@ -47,7 +47,7 @@
         </div>
     </div>
     <script>
-        // setting 
+        // setting lang:vi-vn
         var message = {
             fileNotImage : " không phải là ảnh",
             selectFileToUpload:" Vui lòng chọn tệp hình ảnh trước khi tải ảnh lên",
@@ -61,10 +61,23 @@
         var selector = {
             showImages:"", // The id or class containing a list of images before uploading to server 
             imageInput:"", // The id or class of the input selects the image
-            btnUploadImage:"" // The id or class of button upload images
+            btnUploadImage:"", // The id or class of button upload images
+            listOfFile:"" // The id or class containing a list of images after uploading to server 
         }
+        var RetrieveOnlyDataToDisplay = false; // Don't use server just use javascript client
     </script>
     <script src='js/loadDatabase.js'></script>
     <script src='js/uploadFile.js'></script>
+    <script>
+        RetrieveOnlyDataToDisplay = true;
+        if(RetrieveOnlyDataToDisplay){
+            $(btnUploadImage).click(function(){
+                var formData = dataImage;
+                for (var value of formData.values()) {
+                    console.log(value);
+                }
+            })
+        }
+    </script>
 </body>
 </html>

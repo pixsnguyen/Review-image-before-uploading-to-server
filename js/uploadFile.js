@@ -4,6 +4,7 @@ var idSelector = '';
 var arrayIMG = [];
 var form_data = new FormData();
 var countItemFileImg = -1;
+var dataImage = '';
 // Div display and Button
 var showImages ='.showImages';
 var imageInput ='#imgInp';
@@ -140,36 +141,47 @@ function deleteItemIMG(key){
     loadImageView(arrayIMG,showImages);
 }
 $(btnUploadImage).click(function(){
-    var i = 0;
+    var checkTheLengthOfTheArrayFormData = 0;
     for (var value of form_data.values()) {
-        i++;
+        checkTheLengthOfTheArrayFormData++;
     }
     // Check for non-zero array
-    if(i == 0 && arrayIMG.length == 0){
+    if(checkTheLengthOfTheArrayFormData == 0 && arrayIMG.length == 0){
         showMessage('error',selectFileToUpload)
         return;
     }
     $('.uploadIcon').removeClass('fa-cloud-upload');
     $('.uploadIcon').addClass('fa-refresh fa-spin');
     $(btnUploadImage).attr('disabled',true);
-    $.ajax({
-        url: './source/uploadFile.php',
-        headers: { 'X-CSRF-TOKEN': _token },
-        async: false,
-        type: 'POST',
-        data: form_data,
-        processData: false,
-        contentType: false,
-        success: function (data, status) {
-            showMessage('success',uploadPhoToSuccessfully)
-            $('.uploadIcon').addClass('fa-cloud-upload');
-            $('.uploadIcon').removeClass('fa-refresh fa-spin');
-            $(btnUploadImage).attr('disabled',false);
-            $(showImages).html('');
-            showImageListFromDatabase();
-        },
-        error: function (request, error) {
+    if(!RetrieveOnlyDataToDisplay){
+        $.ajax({
+            url: './source/uploadFile.php',
+            headers: { 'X-CSRF-TOKEN': _token },
+            async: false,
+            type: 'POST',
+            data: form_data,
+            processData: false,
+            contentType: false,
+            success: function (data, status) {
+                // Reset when the results are returned successfully
+                form_data = new FormData();
+                arrayIMG = [];
+                showMessage('success',uploadPhoToSuccessfully)
+                $('.uploadIcon').addClass('fa-cloud-upload');
+                $('.uploadIcon').removeClass('fa-refresh fa-spin');
+                $(btnUploadImage).attr('disabled',false);
+                $(showImages).html('');
+                showImageListFromDatabase();
+            },
+            error: function (request, error) {
 
-        }
-    });
+            }
+        });
+    }else{
+        dataImage = form_data;
+        $('.uploadIcon').addClass('fa-cloud-upload');
+        $('.uploadIcon').removeClass('fa-refresh fa-spin');
+        $(btnUploadImage).attr('disabled',false);
+        console.log('The program is only intended for user-side display')
+    }
 })

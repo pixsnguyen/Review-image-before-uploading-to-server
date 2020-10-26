@@ -2,6 +2,7 @@
 var titleNotify =' Notify';
 var contentConfirm =' Do you want to delete the selected pictures?';
 var confirmButton =' Yes';
+var listOfFile ='.listOfFile';
 var cancelButton =' No';
 var notifySuccess =' Action executed successfully';
 if(typeof (message) != 'undefined' && typeof (message) == 'object'){
@@ -10,6 +11,9 @@ if(typeof (message) != 'undefined' && typeof (message) == 'object'){
     confirmButton = (message.confirmButton != '' && typeof(message.confirmButton) != 'undefinded') ? message.confirmButton :' Yes';
     cancelButton = (message.cancelButton != '' && typeof(message.cancelButton) != 'undefinded') ? message.cancelButton :' No';
     notifySuccess = (message.notifySuccess != '' && typeof(message.notifySuccess) != 'undefinded') ? message.notifySuccess :' Action executed successfully';
+}
+if(typeof (selector) != 'undefined' && typeof (selector) == 'object'){
+    listOfFile = (selector.listOfFile != '' && typeof(selector.listOfFile) != 'undefinded') ? selector.listOfFile :'.listOfFile';
 }
 function loadDatabase(){
     var _token = $('meta[name="csrf-token"]').attr('content');
@@ -91,7 +95,7 @@ function showImageListFromDatabase(){
             </tbody>`;
     });
     template += `</table>`;
-    $('.listOfFile').html(template);
+    $(listOfFile).html(template);
 }
 function deleteItemIMGFromDatabase(key){
     $.confirm({
