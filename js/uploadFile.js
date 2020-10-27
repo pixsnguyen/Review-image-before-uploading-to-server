@@ -182,6 +182,6 @@ $(btnUploadImage).click(function(){
         $('.uploadIcon').addClass('fa-cloud-upload');
         $('.uploadIcon').removeClass('fa-refresh fa-spin');
         $(btnUploadImage).attr('disabled',false);
-        console.log('The program is only intended for user-side display')
+        // console.log('The program is only intended for user-side display')
     }
 })
