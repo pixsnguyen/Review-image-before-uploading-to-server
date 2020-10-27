@@ -71,13 +71,13 @@ function loadImageView(arrayIMG,divView){
             template += `
             <tbody>
                     <tr>
-                        <td class="frameIMG border" width="10%">
+                        <td class="frameIMG " width="10%">
                             <img id="upload_`+idSelector+`" src="#" alt="your image" width="50" hieght="50" />
                         </td>
-                        <td class="fileName text-center border v-middle">
+                        <td class="fileName text-center  v-middle">
                             <span class="name_`+idSelector+`">`+value.name+`</span>
                         </td>
-                        <td class="fileSize text-center border v-middle">
+                        <td class="fileSize text-center  v-middle">
                             <span class="size_`+idSelector+`">`+imgSize+`</span>
                         </td>
                         <td class="frameDeleteFile text-center v-middle">
