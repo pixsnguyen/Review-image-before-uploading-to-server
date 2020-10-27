@@ -64,12 +64,12 @@
             btnUploadImage:"", // The id or class of button upload images
             listOfFile:"" // The id or class containing a list of images after uploading to server 
         }
-        var RetrieveOnlyDataToDisplay = false; // Don't use server just use javascript client
+        var RetrieveOnlyDataToDisplay = true; // Don't use server just use javascript client
     </script>
     <script src='js/loadDatabase.js'></script>
     <script src='js/uploadFile.js'></script>
     <script>
-        RetrieveOnlyDataToDisplay = true;
+        // RetrieveOnlyDataToDisplay = false;
         if(RetrieveOnlyDataToDisplay){
             $(btnUploadImage).click(function(){
                 var formData = dataImage;
