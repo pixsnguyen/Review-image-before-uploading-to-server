@@ -71,7 +71,7 @@
         var RetrieveOnlyDataToDisplay = false; // Don't use server just use javascript client
     </script>
 ```
-## Code proces
+## Code process
 ```
 <script src='js/loadDatabase.js'></script>
     <script src='js/uploadFile.js'></script>
